@@ -1,0 +1,29 @@
+server:
+  port: 8555
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/heima
+    username: root
+    data-password:
+    redis:
+      host: 192.168.25.1
+  rabbitmq:
+    host: 192.168.25.1
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      exchange: leyou.sms.exchange
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+      instance:
+        lease-renewal-interval-in-seconds: 5 # 5秒钟发送一次心跳
+        lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+mybatis:
+  type-aliases-package: com.leyou.user.pojo
